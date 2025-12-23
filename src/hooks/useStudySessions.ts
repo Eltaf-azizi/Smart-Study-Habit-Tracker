@@ -198,3 +198,4 @@ export function useWeeklyStats() {
     enabled: !!user,
   });
 }
+ 
