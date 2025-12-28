@@ -1,0 +1,4 @@
+project_id = "nswfwvanxuzlycqyoncu"
+
+[functions.send-leaderboard-invite]
+verify_jwt = false
