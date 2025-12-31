@@ -116,3 +116,13 @@ The project structure is modular and scalable, making it suitable for future exp
  - Stable local data handling
  - Ready for real users
  - Expandable architecture
+
+## Future Enhancements
+Planned improvements include:
+
+ - Cloud accounts and sync
+ - Mobile companion app
+ - AI-based study recommendations
+ - Pomodoro and focus modes
+ - Parent or teacher dashboards
+ - Advanced analytics
