@@ -17,3 +17,23 @@ This project solves that by providing:
  - Optional social motivation through leaderboards
 
 All without invading privacy or overcomplicating the experience.
+
+
+## Key Features
+
+### Study Timer
+
+ - Track focused study sessions by subject
+ - Start and stop sessions manually
+ - Automatically store session duration
+ - Accurate daily and weekly totals
+
+### Daily Report
+
+ - Total study time for the day
+ - Subject-wise breakdown
+ - Most studied subject
+ - Number of study sessions
+ - Visual charts for clarity
+
+
