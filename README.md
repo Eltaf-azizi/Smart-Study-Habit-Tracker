@@ -94,3 +94,17 @@ This application is built with privacy as a core principle:
  - Leaderboards require explicit consent
 
 Users always control their data.
+
+## Technology Stack
+
+ - TypeScript
+ - HTML
+ - CSS
+ - Node.js
+ - Vite (development server and build tool)
+
+The project structure is modular and scalable, making it suitable for future expansion into:
+
+ - Cloud-based sync
+ - Mobile applications
+ - AI-powered study insights
