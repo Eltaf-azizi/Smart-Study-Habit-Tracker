@@ -36,4 +36,41 @@ All without invading privacy or overcomplicating the experience.
  - Number of study sessions
  - Visual charts for clarity
 
+### Weekly Report
 
+ - 7-day study overview
+ - Daily totals and weekly total
+ - Average study time
+ - Most productive day
+ - Trend visualization
+
+### Habit Tracker
+
+ - Create custom daily habits
+ - Mark habits as completed
+ - Automatic streak tracking
+ - Habit completion history
+
+### Task Manager
+
+ - Add tasks with subjects and due dates
+ - Mark tasks as completed
+ - View pending and due-today tasks
+ - Integrated into the dashboard
+
+### Dashboard
+
+ - Today’s total study time
+ - Completed habits
+ - Pending tasks
+ - Quick subject overview
+ - Clean, motivating layout
+
+### Leaderboards (Invite-Based)
+
+ - Create private leaderboards
+ - Invite people via email
+ - Join only by accepting the invitation
+ - Admin-controlled groups
+ - Privacy-first data sharing
+ - Useful for families, friends, or study groups
