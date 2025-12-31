@@ -74,3 +74,23 @@ All without invading privacy or overcomplicating the experience.
  - Admin-controlled groups
  - Privacy-first data sharing
  - Useful for families, friends, or study groups
+
+
+### Settings
+
+ - Add or remove subjects
+ - Theme switching (light/dark)
+ - Export data (JSON)
+ - Designed for future cloud sync
+
+## Privacy First Design
+
+This application is built with privacy as a core principle:
+
+ - No screen recording
+ - No keystroke logging
+ - No access to personal content
+ - Only user-approved data is shared
+ - Leaderboards require explicit consent
+
+Users always control their data.
