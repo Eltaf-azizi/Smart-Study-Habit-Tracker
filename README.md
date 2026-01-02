@@ -126,3 +126,11 @@ Planned improvements include:
  - Pomodoro and focus modes
  - Parent or teacher dashboards
  - Advanced analytics
+
+
+## Target Users
+
+ - Students who want better study discipline
+ - Families tracking learning habits together
+ - Study groups and classrooms
+ - Self-learners preparing for exams
