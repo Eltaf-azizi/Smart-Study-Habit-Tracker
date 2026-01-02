@@ -134,3 +134,13 @@ Planned improvements include:
  - Families tracking learning habits together
  - Study groups and classrooms
  - Self-learners preparing for exams
+
+
+## Project Philosophy
+
+This project is built with the belief that:
+
+ - Consistency matters more than intensity
+ - Awareness leads to improvement
+ - Motivation should be supportive, not stressful
+ - Good tools should respect user privacy
