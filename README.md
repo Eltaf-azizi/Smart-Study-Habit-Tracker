@@ -144,3 +144,13 @@ This project is built with the belief that:
  - Awareness leads to improvement
  - Motivation should be supportive, not stressful
  - Good tools should respect user privacy
+
+## 🤝 Contributing
+
+We welcome contributions from the community! Here's how you can help:
+
+1. **Bug Reports**: Report issues through GitHub issues
+2. **Feature Requests**: Suggest new features or improvements
+3. **Code Contributions**: Submit pull requests for bug fixes or features
+4. **Design Feedback**: Share suggestions for UI/UX improvements
+5. **Documentation**: Help improve guides and documentation
