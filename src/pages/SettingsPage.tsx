@@ -82,11 +82,11 @@ export default function SettingsPage() {
     } else if (format === 'csv') {
       // Simple CSV export - combine all data
       const csvData = [
-        ['Type', 'ID', 'Name/Title', 'Description', 'Date', 'Duration/Color', 'Completed'],
+        ['Type', 'ID', 'Name/Title', 'Subject ID', 'Date/Time', 'Duration/Color', 'Completed'],
         ...subjects.map(s => ['Subject', s.id, s.name, '', '', s.color, '']),
-        ...habits.map(h => ['Habit', h.id, h.name, h.description || '', h.created_at, '', h.completed ? 'Yes' : 'No']),
-        ...tasks.map(t => ['Task', t.id, t.title, t.description || '', t.due_date || '', '', t.completed ? 'Yes' : 'No']),
-        ...studySessions.map(s => ['Session', s.id, s.subject_name || '', '', s.date, s.duration.toString(), ''])
+        ...habits.map(h => ['Habit', h.id, h.name, '', h.createdDate, '', '']),
+        ...tasks.map(t => ['Task', t.id, t.title, t.subjectId || '', t.dueDate, '', t.completed ? 'Yes' : 'No']),
+        ...studySessions.map(s => ['Session', s.id, '', s.subjectId, `${s.startTime} - ${s.endTime}`, s.duration.toString(), ''])
       ];
 
       const csv = csvData.map(row => row.map(cell => `"${cell.replace(/"/g, '""')}"`).join(',')).join('\n');
@@ -231,6 +231,35 @@ export default function SettingsPage() {
                 </Button>
               </div>
             ))}
+          </div>
+        </div>
+
+        {/* Data Export */}
+        <div className="bg-card rounded-2xl border border-border p-6">
+          <h3 className="font-display font-semibold mb-4 flex items-center gap-2">
+            <Download className="w-5 h-5 text-muted-foreground" />
+            Export Data
+          </h3>
+          <p className="text-sm text-muted-foreground mb-4">
+            Download your study data for backup or analysis.
+          </p>
+          <div className="flex gap-3">
+            <Button
+              onClick={() => exportData('json')}
+              variant="outline"
+              className="flex-1"
+            >
+              <Download className="w-4 h-4 mr-2" />
+              Export as JSON
+            </Button>
+            <Button
+              onClick={() => exportData('csv')}
+              variant="outline"
+              className="flex-1"
+            >
+              <Download className="w-4 h-4 mr-2" />
+              Export as CSV
+            </Button>
           </div>
         </div>
 
