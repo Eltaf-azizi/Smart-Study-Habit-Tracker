@@ -3,6 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ThemeProvider } from "next-themes";
 import { AuthProvider } from "@/contexts/AuthContexts";
 import Dashboard from "./pages/Dashboard";
 import TimerPage from "./pages/TimerPage";
@@ -22,29 +23,31 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <AuthProvider>
-          <Routes>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/timer" element={<TimerPage />} />
-            <Route path="/daily" element={<DailyReportPage />} />
-            <Route path="/weekly" element={<WeeklyReportPage />} />
-            <Route path="/habits" element={<HabitsPage />} />
-            <Route path="/tasks" element={<TasksPage />} />
-            <Route path="/profile" element={<ProfilePage />} />
-            <Route path="/leaderboards" element={<LeaderboardsPage />} />
-            <Route path="/leaderboards/:id" element={<LeaderboardDetailPage />} />
-            <Route path="/join-leaderboard" element={<JoinLeaderboardPage />} />
-            <Route path="/settings" element={<SettingsPage />} />
-            <Route path="/auth" element={<AuthPage />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </AuthProvider>
-      </BrowserRouter>
-    </TooltipProvider>
+    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <AuthProvider>
+            <Routes>
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/timer" element={<TimerPage />} />
+              <Route path="/daily" element={<DailyReportPage />} />
+              <Route path="/weekly" element={<WeeklyReportPage />} />
+              <Route path="/habits" element={<HabitsPage />} />
+              <Route path="/tasks" element={<TasksPage />} />
+              <Route path="/profile" element={<ProfilePage />} />
+              <Route path="/leaderboards" element={<LeaderboardsPage />} />
+              <Route path="/leaderboards/:id" element={<LeaderboardDetailPage />} />
+              <Route path="/join-leaderboard" element={<JoinLeaderboardPage />} />
+              <Route path="/settings" element={<SettingsPage />} />
+              <Route path="/auth" element={<AuthPage />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </AuthProvider>
+        </BrowserRouter>
+      </TooltipProvider>
+    </ThemeProvider>
   </QueryClientProvider>
 );
 
