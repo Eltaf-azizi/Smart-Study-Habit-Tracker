@@ -8,7 +8,7 @@ import { useTasks } from '@/hooks/useTasks';
 import { useStudySessions } from '@/hooks/useStudySessions';
 import { useAuth } from '@/contexts/AuthContexts';
 import { useTheme } from 'next-themes';
-import { Plus, Trash2, Download, Palette, Moon, Sun, Loader2, LogOut, Bell, BellOff } from 'lucide-react';
+import { Plus, Trash2, Download, Palette, Moon, Sun, Loader2, LogOut, Bell, BellOff, Timer } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
 
 const PRESET_COLORS = [
@@ -36,6 +36,10 @@ export default function SettingsPage() {
   const [newSubjectColor, setNewSubjectColor] = useState(PRESET_COLORS[0]);
   const [notificationsEnabled, setNotificationsEnabled] = useState(false);
   const [notificationPermission, setNotificationPermission] = useState<NotificationPermission>('default');
+  const [pomodoroWork, setPomodoroWork] = useState(25);
+  const [pomodoroShortBreak, setPomodoroShortBreak] = useState(5);
+  const [pomodoroLongBreak, setPomodoroLongBreak] = useState(15);
+  const [pomodoroSessions, setPomodoroSessions] = useState(4);
 
   useEffect(() => {
     if ('Notification' in window) {
@@ -206,6 +210,40 @@ export default function SettingsPage() {
               <Palette className="w-4 h-4 mr-2" />
               System
             </Button>
+          </div>
+        </div>
+
+        {/* Notifications */}
+        <div className="bg-card rounded-2xl border border-border p-6">
+          <h3 className="font-display font-semibold mb-4 flex items-center gap-2">
+            {notificationsEnabled ? <Bell className="w-5 h-5 text-muted-foreground" /> : <BellOff className="w-5 h-5 text-muted-foreground" />}
+            Notifications
+          </h3>
+          <p className="text-sm text-muted-foreground mb-4">
+            Get reminded about your habits and tasks.
+          </p>
+          <div className="flex gap-3">
+            {notificationPermission === 'default' && (
+              <Button onClick={requestNotificationPermission} variant="outline">
+                <Bell className="w-4 h-4 mr-2" />
+                Enable Notifications
+              </Button>
+            )}
+            {notificationPermission === 'granted' && (
+              <>
+                <Button onClick={testNotification} variant="outline">
+                  <Bell className="w-4 h-4 mr-2" />
+                  Test Notification
+                </Button>
+                <Button onClick={() => setNotificationsEnabled(!notificationsEnabled)} variant="outline">
+                  {notificationsEnabled ? <BellOff className="w-4 h-4 mr-2" /> : <Bell className="w-4 h-4 mr-2" />}
+                  {notificationsEnabled ? 'Disable' : 'Enable'} Reminders
+                </Button>
+              </>
+            )}
+            {notificationPermission === 'denied' && (
+              <p className="text-sm text-destructive">Notifications are blocked. Please enable them in your browser settings.</p>
+            )}
           </div>
         </div>
 
