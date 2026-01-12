@@ -27,6 +27,9 @@ export default function SettingsPage() {
   const { data: subjects = [], isLoading: subjectsLoading } = useSubjects();
   const addSubject = useAddSubject();
   const deleteSubject = useDeleteSubject();
+  const { data: habits = [] } = useHabits();
+  const { data: tasks = [] } = useTasks();
+  const { data: studySessions = [] } = useStudySessions();
   const { theme, setTheme } = useTheme();
 
   const [newSubjectName, setNewSubjectName] = useState('');
@@ -55,6 +58,48 @@ export default function SettingsPage() {
   const handleSignOut = async () => {
     await signOut();
     toast({ title: 'Signed out successfully' });
+  };
+
+  const exportData = (format: 'json' | 'csv') => {
+    const data = {
+      subjects,
+      habits,
+      tasks,
+      studySessions,
+      exportedAt: new Date().toISOString(),
+      user: user?.email
+    };
+
+    if (format === 'json') {
+      const json = JSON.stringify(data, null, 2);
+      const blob = new Blob([json], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `study-data-${new Date().toISOString().split('T')[0]}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+    } else if (format === 'csv') {
+      // Simple CSV export - combine all data
+      const csvData = [
+        ['Type', 'ID', 'Name/Title', 'Description', 'Date', 'Duration/Color', 'Completed'],
+        ...subjects.map(s => ['Subject', s.id, s.name, '', '', s.color, '']),
+        ...habits.map(h => ['Habit', h.id, h.name, h.description || '', h.created_at, '', h.completed ? 'Yes' : 'No']),
+        ...tasks.map(t => ['Task', t.id, t.title, t.description || '', t.due_date || '', '', t.completed ? 'Yes' : 'No']),
+        ...studySessions.map(s => ['Session', s.id, s.subject_name || '', '', s.date, s.duration.toString(), ''])
+      ];
+
+      const csv = csvData.map(row => row.map(cell => `"${cell.replace(/"/g, '""')}"`).join(',')).join('\n');
+      const blob = new Blob([csv], { type: 'text/csv' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `study-data-${new Date().toISOString().split('T')[0]}.csv`;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    toast({ title: `Data exported as ${format.toUpperCase()}` });
   };
 
   if (authLoading || subjectsLoading) {
