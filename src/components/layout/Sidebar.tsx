@@ -1,13 +1,14 @@
 import { NavLink } from 'react-router-dom';
-import { 
-  LayoutDashboard, 
-  Timer, 
-  BarChart3, 
-  CalendarDays, 
-  CheckSquare, 
-  ListTodo, 
+import {
+  LayoutDashboard,
+  Timer,
+  BarChart3,
+  CalendarDays,
+  CheckSquare,
+  ListTodo,
   Settings,
-  BookOpen
+  BookOpen,
+  Calendar
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -16,6 +17,7 @@ const navItems = [
   { to: '/timer', icon: Timer, label: 'Study Timer' },
   { to: '/daily', icon: BarChart3, label: 'Daily Report' },
   { to: '/weekly', icon: CalendarDays, label: 'Weekly Report' },
+  { to: '/calendar', icon: Calendar, label: 'Calendar' },
   { to: '/habits', icon: CheckSquare, label: 'Habits' },
   { to: '/tasks', icon: ListTodo, label: 'Tasks' },
   { to: '/settings', icon: Settings, label: 'Settings' },

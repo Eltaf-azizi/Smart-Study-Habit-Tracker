@@ -16,6 +16,7 @@ import ProfilePage from "./pages/ProfilePage";
 import LeaderboardsPage from "./pages/LeaderboardsPage";
 import LeaderboardDetailPage from "./pages/LeaderboardDetailPage";
 import JoinLeaderboardPage from "./pages/JoinLeaderboardPage";
+import CalendarPage from "./pages/CalendarPage";
 import AuthPage from "./pages/AuthPage";
 import NotFound from "./pages/NotFound";
 
@@ -36,6 +37,7 @@ const App = () => (
               <Route path="/weekly" element={<WeeklyReportPage />} />
               <Route path="/habits" element={<HabitsPage />} />
               <Route path="/tasks" element={<TasksPage />} />
+              <Route path="/calendar" element={<CalendarPage />} />
               <Route path="/profile" element={<ProfilePage />} />
               <Route path="/leaderboards" element={<LeaderboardsPage />} />
               <Route path="/leaderboards/:id" element={<LeaderboardDetailPage />} />

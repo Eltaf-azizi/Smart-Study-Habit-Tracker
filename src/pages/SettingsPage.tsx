@@ -247,6 +247,59 @@ export default function SettingsPage() {
           </div>
         </div>
 
+        {/* Pomodoro Timer */}
+        <div className="bg-card rounded-2xl border border-border p-6">
+          <h3 className="font-display font-semibold mb-4 flex items-center gap-2">
+            <Timer className="w-5 h-5 text-muted-foreground" />
+            Pomodoro Timer
+          </h3>
+          <p className="text-sm text-muted-foreground mb-4">
+            Customize your focus and break intervals.
+          </p>
+          <div className="grid grid-cols-2 gap-4">
+            <div>
+              <label className="text-sm font-medium">Work Duration (min)</label>
+              <Input
+                type="number"
+                value={pomodoroWork}
+                onChange={(e) => setPomodoroWork(Number(e.target.value))}
+                min="1"
+                max="60"
+              />
+            </div>
+            <div>
+              <label className="text-sm font-medium">Short Break (min)</label>
+              <Input
+                type="number"
+                value={pomodoroShortBreak}
+                onChange={(e) => setPomodoroShortBreak(Number(e.target.value))}
+                min="1"
+                max="30"
+              />
+            </div>
+            <div>
+              <label className="text-sm font-medium">Long Break (min)</label>
+              <Input
+                type="number"
+                value={pomodoroLongBreak}
+                onChange={(e) => setPomodoroLongBreak(Number(e.target.value))}
+                min="1"
+                max="60"
+              />
+            </div>
+            <div>
+              <label className="text-sm font-medium">Sessions Before Long Break</label>
+              <Input
+                type="number"
+                value={pomodoroSessions}
+                onChange={(e) => setPomodoroSessions(Number(e.target.value))}
+                min="1"
+                max="10"
+              />
+            </div>
+          </div>
+        </div>
+
         {/* Subjects */}
         <div className="bg-card rounded-2xl border border-border p-6">
           <h3 className="font-display font-semibold mb-4">Manage Subjects</h3>
