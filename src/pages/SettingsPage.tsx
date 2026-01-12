@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { AppLayout } from '@/components/layout/AppLayout';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -8,7 +8,7 @@ import { useTasks } from '@/hooks/useTasks';
 import { useStudySessions } from '@/hooks/useStudySessions';
 import { useAuth } from '@/contexts/AuthContexts';
 import { useTheme } from 'next-themes';
-import { Plus, Trash2, Download, Palette, Moon, Sun, Loader2, LogOut } from 'lucide-react';
+import { Plus, Trash2, Download, Palette, Moon, Sun, Loader2, LogOut, Bell, BellOff } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
 
 const PRESET_COLORS = [
@@ -34,6 +34,15 @@ export default function SettingsPage() {
 
   const [newSubjectName, setNewSubjectName] = useState('');
   const [newSubjectColor, setNewSubjectColor] = useState(PRESET_COLORS[0]);
+  const [notificationsEnabled, setNotificationsEnabled] = useState(false);
+  const [notificationPermission, setNotificationPermission] = useState<NotificationPermission>('default');
+
+  useEffect(() => {
+    if ('Notification' in window) {
+      setNotificationPermission(Notification.permission);
+      setNotificationsEnabled(Notification.permission === 'granted');
+    }
+  }, []);
 
   const handleAddSubject = () => {
     if (!newSubjectName.trim()) {
@@ -84,9 +93,9 @@ export default function SettingsPage() {
       const csvData = [
         ['Type', 'ID', 'Name/Title', 'Subject ID', 'Date/Time', 'Duration/Color', 'Completed'],
         ...subjects.map(s => ['Subject', s.id, s.name, '', '', s.color, '']),
-        ...habits.map(h => ['Habit', h.id, h.name, '', h.createdDate, '', '']),
-        ...tasks.map(t => ['Task', t.id, t.title, t.subjectId || '', t.dueDate, '', t.completed ? 'Yes' : 'No']),
-        ...studySessions.map(s => ['Session', s.id, '', s.subjectId, `${s.startTime} - ${s.endTime}`, s.duration.toString(), ''])
+        ...habits.map((h: any) => ['Habit', h.id, h.name, '', h.created_at, '', '']),
+        ...tasks.map((t: any) => ['Task', t.id, t.title, t.subject_id || '', t.due_date, '', t.completed ? 'Yes' : 'No']),
+        ...studySessions.map((s: any) => ['Session', s.id, '', s.subject_id, `${s.start_time} - ${s.end_time}`, s.duration.toString(), ''])
       ];
 
       const csv = csvData.map(row => row.map(cell => `"${cell.replace(/"/g, '""')}"`).join(',')).join('\n');
@@ -100,6 +109,37 @@ export default function SettingsPage() {
     }
 
     toast({ title: `Data exported as ${format.toUpperCase()}` });
+  };
+
+  const requestNotificationPermission = async () => {
+    if (!('Notification' in window)) {
+      toast({ title: 'Notifications not supported', variant: 'destructive' });
+      return;
+    }
+
+    const permission = await Notification.requestPermission();
+    setNotificationPermission(permission);
+    setNotificationsEnabled(permission === 'granted');
+
+    if (permission === 'granted') {
+      toast({ title: 'Notifications enabled! 🔔' });
+    } else {
+      toast({ title: 'Notifications denied', variant: 'destructive' });
+    }
+  };
+
+  const testNotification = () => {
+    if (notificationPermission !== 'granted') {
+      toast({ title: 'Please enable notifications first', variant: 'destructive' });
+      return;
+    }
+
+    new Notification('StudyFlow Reminder', {
+      body: 'This is a test notification from StudyFlow!',
+      icon: '/placeholder.svg', // or a proper icon
+    });
+
+    toast({ title: 'Test notification sent!' });
   };
 
   if (authLoading || subjectsLoading) {
