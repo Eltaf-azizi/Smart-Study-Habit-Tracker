@@ -3,7 +3,7 @@ import { AppLayout } from '@/components/layout/AppLayout';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useHabits, useHabitLogs, useAddHabit, useDeleteHabit, useToggleHabitLog, getHabitStreak } from '@/hooks/useHabits';
-import { useAuth } from '@/contexts/AuthContext';
+import { useAuth } from '@/contexts/AuthContexts';
 import { Plus, Trash2, Flame, Check, Loader2 } from 'lucide-react';
 import { format, subDays } from 'date-fns';
 import { toast } from '@/hooks/use-toast';

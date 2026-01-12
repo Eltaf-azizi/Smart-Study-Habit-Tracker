@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useSubjects } from '@/hooks/useSubjects';
 import { useTodaySessions, useAddStudySession } from '@/hooks/useStudySessions';
-import { useAuth } from '@/contexts/AuthContext';
+import { useAuth } from '@/contexts/AuthContexts';
 import { format } from 'date-fns';
 import { toast } from '@/hooks/use-toast';
 

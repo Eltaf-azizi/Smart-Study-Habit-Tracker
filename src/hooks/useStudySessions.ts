@@ -1,6 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { supabase } from '@/integrations/supabase/client';
-import { useAuth } from '@/contexts/AuthContext';
+import { supabase } from '@/integrations/superbase/client';
+import { useAuth } from '@/contexts/AuthContexts';
 import { toast } from '@/hooks/use-toast';
 import { format, startOfDay, endOfDay, subDays, parseISO, isWithinInterval } from 'date-fns';
 

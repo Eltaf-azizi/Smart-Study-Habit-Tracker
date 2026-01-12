@@ -5,7 +5,7 @@ import { useDailyStats } from '@/hooks/useStudySessions';
 import { useSubjects } from '@/hooks/useSubjects';
 import { useHabits, useHabitLogs } from '@/hooks/useHabits';
 import { useTasks } from '@/hooks/useTasks';
-import { useAuth } from '@/contexts/AuthContext';
+import { useAuth } from '@/contexts/AuthContexts';
 import { AppLayout } from '@/components/layout/AppLayout';
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, Cell } from 'recharts';
 import { format } from 'date-fns';

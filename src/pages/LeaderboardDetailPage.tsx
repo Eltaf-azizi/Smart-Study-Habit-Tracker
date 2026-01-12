@@ -21,7 +21,7 @@ import {
   useRemoveMember,
   RankingMetric 
 } from '@/hooks/useLeaderboards';
-import { useAuth } from '@/contexts/AuthContext';
+import { useAuth } from '@/contexts/AuthContexts';
 import { toast } from '@/hooks/use-toast';
 
 const metricLabels: Record<RankingMetric, { label: string; icon: typeof Clock; unit: string }> = {

@@ -2,7 +2,7 @@ import { AppLayout } from '@/components/layout/AppLayout';
 import { StatCard } from '@/components/ui/stat-card';
 import { useDailyStats } from '@/hooks/useStudySessions';
 import { useSubjects } from '@/hooks/useSubjects';
-import { useAuth } from '@/contexts/AuthContext';
+import { useAuth } from '@/contexts/AuthContexts';
 import { Clock, BookOpen, TrendingUp, Target, Loader2 } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, Cell, Tooltip } from 'recharts';
 import { format } from 'date-fns';

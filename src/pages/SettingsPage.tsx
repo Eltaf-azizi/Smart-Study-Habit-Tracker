@@ -3,7 +3,7 @@ import { AppLayout } from '@/components/layout/AppLayout';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useSubjects, useAddSubject, useDeleteSubject } from '@/hooks/useSubjects';
-import { useAuth } from '@/contexts/AuthContext';
+import { useAuth } from '@/contexts/AuthContexts';
 import { Plus, Trash2, Download, Palette, Moon, Sun, Loader2, LogOut } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
 

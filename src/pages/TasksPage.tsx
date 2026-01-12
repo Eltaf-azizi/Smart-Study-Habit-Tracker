@@ -5,7 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useTasks, useAddTask, useUpdateTask, useDeleteTask } from '@/hooks/useTasks';
 import { useSubjects } from '@/hooks/useSubjects';
-import { useAuth } from '@/contexts/AuthContext';
+import { useAuth } from '@/contexts/AuthContexts';
 import { Plus, Trash2, Check, Circle, Calendar, Loader2 } from 'lucide-react';
 import { format, isToday, isPast, isTomorrow, parseISO } from 'date-fns';
 import { toast } from '@/hooks/use-toast';

@@ -5,8 +5,9 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Trophy, Clock, Target, TrendingUp, Users, CheckCircle, XCircle, Loader2 } from 'lucide-react';
-import { supabase } from '@/integrations/supabase/client';
-import { useAuth } from '@/contexts/AuthContext';
+import { supabase } from '@/integrations/superbase/client';
+import { Database } from '@/integrations/superbase/types';
+import { useAuth } from '@/contexts/AuthContexts';
 import { useAcceptInvitation, RankingMetric } from '@/hooks/useLeaderboards';
 import { toast } from '@/hooks/use-toast';
 
@@ -58,7 +59,7 @@ export default function JoinLeaderboardPage() {
           return;
         }
 
-        const leaderboard = invitation.leaderboards as any;
+        const leaderboard = invitation.leaderboards as Database['public']['Tables']['leaderboards']['Row'];
         
         // Check expiry
         const expired = new Date(invitation.expires_at) < new Date();

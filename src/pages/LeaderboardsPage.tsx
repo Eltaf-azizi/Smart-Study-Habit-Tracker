@@ -9,7 +9,7 @@ import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, D
 import { Badge } from '@/components/ui/badge';
 import { Plus, Trophy, Users, Clock, Target, TrendingUp, Crown, Trash2 } from 'lucide-react';
 import { useLeaderboards, useCreateLeaderboard, useDeleteLeaderboard, RankingMetric } from '@/hooks/useLeaderboards';
-import { useAuth } from '@/contexts/AuthContext';
+import { useAuth } from '@/contexts/AuthContexts';
 import { useNavigate } from 'react-router-dom';
 
 const metricLabels: Record<RankingMetric, { label: string; icon: typeof Clock; description: string }> = {
