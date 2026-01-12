@@ -3,6 +3,9 @@ import { AppLayout } from '@/components/layout/AppLayout';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useSubjects, useAddSubject, useDeleteSubject } from '@/hooks/useSubjects';
+import { useHabits } from '@/hooks/useHabits';
+import { useTasks } from '@/hooks/useTasks';
+import { useStudySessions } from '@/hooks/useStudySessions';
 import { useAuth } from '@/contexts/AuthContexts';
 import { useTheme } from 'next-themes';
 import { Plus, Trash2, Download, Palette, Moon, Sun, Loader2, LogOut } from 'lucide-react';
@@ -24,18 +27,10 @@ export default function SettingsPage() {
   const { data: subjects = [], isLoading: subjectsLoading } = useSubjects();
   const addSubject = useAddSubject();
   const deleteSubject = useDeleteSubject();
+  const { theme, setTheme } = useTheme();
 
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
   const [newSubjectName, setNewSubjectName] = useState('');
   const [newSubjectColor, setNewSubjectColor] = useState(PRESET_COLORS[0]);
-
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('studyflow_theme') as 'light' | 'dark' | null;
-    if (savedTheme) {
-      setTheme(savedTheme);
-      document.documentElement.classList.toggle('dark', savedTheme === 'dark');
-    }
-  }, []);
 
   const handleAddSubject = () => {
     if (!newSubjectName.trim()) {
@@ -52,10 +47,8 @@ export default function SettingsPage() {
     deleteSubject.mutate(id);
   };
 
-  const handleThemeChange = (newTheme: 'light' | 'dark') => {
+  const handleThemeChange = (newTheme: string) => {
     setTheme(newTheme);
-    localStorage.setItem('studyflow_theme', newTheme);
-    document.documentElement.classList.toggle('dark', newTheme === 'dark');
     toast({ title: `Switched to ${newTheme} mode` });
   };
 
@@ -119,6 +112,14 @@ export default function SettingsPage() {
             >
               <Moon className="w-4 h-4 mr-2" />
               Dark
+            </Button>
+            <Button
+              variant={theme === 'system' ? 'default' : 'outline'}
+              onClick={() => handleThemeChange('system')}
+              className={theme === 'system' ? 'gradient-primary text-primary-foreground' : ''}
+            >
+              <Palette className="w-4 h-4 mr-2" />
+              System
             </Button>
           </div>
         </div>
